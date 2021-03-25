@@ -1,5 +1,9 @@
 ## Political Preparedness
 
+Note : In order to launch this project, you must add API_KEY to local.properties file as the following.
+API_KEY=A1B2C3
+In order to generate an API key, open https://console.developers.google.com -> create a project -> enable Google Civic Api -> copy the api key.
+
 PolitcalPreparedness is an example application built to demonstrate core Android Development skills as presented in the Udacity Android Developers Kotlin curriculum. 
 
 This app demonstrates the following views and techniques:
