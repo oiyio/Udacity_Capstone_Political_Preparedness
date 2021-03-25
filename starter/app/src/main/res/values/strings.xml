@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Political Preparedness</string>
+    <string name="find_my_representatives">Find My Representatives</string>
+    <string name="upcoming_elections">Upcoming elections</string>
+    <string name="representative_search"><u>Representative Search</u></string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="my_representatives"><u>My Representatives</u></string>
+    <string name="office">Office</string>
+    <string name="officials_name">Official\'s Name</string>
+    <string name="officials_party">Official\'s Party</string>
 
-    <!-- TODO: Add necessary string values -->
+    <string name="saved_elections">Saved elections</string>
+    <string name="button_follow_election">Follow Election</string>
+    <string name="button_unfollow_election">Unfollow Election</string>
+
+
+    <string name="election_information">Election Information</string>
+    <string name="click_to_learn_voting_locations"><u>Click to learn Voting Locations</u></string>
+    <string name="click_to_learn_ballot_information"><u>Click to learn Ballot Information</u></string>
+    <string name="location_required_error">Location services must be enabled to use the app</string>
+    <string name="permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+    <string name="settings">Settings</string>
+    <string name="loading">Loading …</string>
+    <string name="representative_image">representative image</string>
+    <string name="icon_wwww">icon wwww</string>
+    <string name="icon_facebook">icon facebook</string>
+    <string name="icon_twitter">icon twitter</string>
 
 </resources>

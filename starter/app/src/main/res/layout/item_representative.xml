@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="representative"
+            type="com.example.android.politicalpreparedness.features.representative.model.Representative" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewRepresentative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/representative_image"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:profileImage="@{representative.official.photoUrl}" />
+
+        <TextView
+            android:id="@+id/textViewOffice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:text="@{representative.office.name}"
+            app:layout_constraintStart_toEndOf="@+id/imageViewRepresentative"
+            app:layout_constraintTop_toTopOf="@+id/imageViewRepresentative"
+            tools:text="@string/office" />
+
+        <TextView
+            android:id="@+id/textViewOfficeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@{representative.official.name}"
+            app:layout_constraintStart_toStartOf="@+id/textViewOffice"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOffice"
+            tools:text="@string/officials_name" />
+
+        <TextView
+            android:id="@+id/textViewOfficialParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="@{representative.official.party}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewOfficeName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOfficeName"
+            tools:text="@string/officials_party" />
+
+        <ImageView
+            android:id="@+id/imageViewTwitterIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:contentDescription="@string/icon_twitter"
+            android:src="@drawable/ic_twitter"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imageViewFacebookIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/icon_facebook"
+            android:src="@drawable/ic_facebook"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewTwitterIcon"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewTwitterIcon"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imageViewWwwIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/icon_wwww"
+            android:src="@drawable/ic_www"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewFacebookIcon"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewFacebookIcon"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
