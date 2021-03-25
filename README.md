@@ -1,52 +1,27 @@
-# README Template
-
-Below is a template provided for use when building your README file for students.
-
 # Project Title
 
-Project description goes here.
+Political PreparedNess
 
-## Getting Started
+# Features
 
-Instructions for how to get a copy of the project running on your local machine.
+Project has 4 screens:
+- Launch screen has two buttons for navigating to "Upcoming election" screen or "Find My Representatives" screen.
+- Upcoming Elections screen : Upcoming elections retrieved from api and showed to user. Also followed elections retrieved from room db and showed to user. By clicking an item in this list, user is navigated to VoterInfo screen. 
+- VoterInfo screen : Details of the clicked election is shown in this screen. User can follow this election by clicking the follow button so that followed elections saved into db and can be seen in the previous screen.
+- Representatives screen : User can see representatives w.r.t their address. By clicking "find my location" button, foreground and background permission are requested and location prompted to turned on. If permissions are granted and location is turned on, latitude longitude are found and address is found with the help of geolocation and editText fields are filled automatically. By clicking "find my representatives" button, representatives in your address is shown in the list. MotionLayout is used in this page and provides the bottom of page drags upward and becomes full screen.
 
-### Dependencies
+### Technology Stack Used in this project
 
-```
-Examples here
-```
+Mvvm, Repository Pattern
+Databinding
+Retrofit
+Moshi
+Room
+Dagger Hilt
+StateFlow
+Navigation Components
+
 
 ### Installation
 
-Step by step explanation of how to get a dev environment running.
-
-List out the steps
-
-```
-Give an example here
-```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
-
-```
-Examples here
-```
-## Project Instructions
-
-This section should contain all the student deliverables for this project.
-
-## Built With
-
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
-
-Include all items used to build project.
-
-## License
+Note : In order to launch this project, you must add API_KEY to local.properties file as the following. API_KEY=A1B2C3 In order to generate an API key, open https://console.developers.google.com -> create a project -> enable Google Civic Api -> copy the api key.
