@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.util
 
-
 import android.Manifest
 import android.annotation.TargetApi
 import android.content.Context
@@ -46,7 +45,6 @@ fun isBackgroundLocationPermissionGranted(context: Context): Boolean {
     }
 }
 
-
 // 🔥 Requests the permission of "foreground location ( ACCESS_FINE_LOCATION )"
 fun requestForegroundLocationPermission(fragment: Fragment) {
     if (isForegroundLocationPermissionGranted(fragment.requireContext())) {
@@ -58,8 +56,8 @@ fun requestForegroundLocationPermission(fragment: Fragment) {
     val resultCode = REQUEST_FOREGROUND_ONLY_PERMISSION_REQUEST_CODE
 
     fragment.requestPermissions(
-            permissionsArray,
-            resultCode
+        permissionsArray,
+        resultCode
     )
 }
 
@@ -82,8 +80,8 @@ fun requestBackgroundLocationPermission(fragment: Fragment) {
     if (isForegroundLocationPermissionGranted(fragment.requireContext())) {
         if (runningQOrLater) {
             fragment.requestPermissions(
-                    permissionsArray,
-                    resultCode
+                permissionsArray,
+                resultCode
             )
         }
     }
@@ -94,14 +92,19 @@ fun isPermissionGranted(context: Context, permission: String): Boolean {
 }
 
 fun showSnackbarWithSettingsAction(activity: FragmentActivity) {
-    Snackbar.make(activity.findViewById(android.R.id.content), R.string.permission_denied_explanation, Snackbar.LENGTH_INDEFINITE)
-            .setAction(R.string.settings) {
-                // Launches App settings screen.
-                activity.startActivity(
-                        Intent().apply {
-                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            data = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        })
-            }.show()
+    Snackbar.make(
+        activity.findViewById(android.R.id.content),
+        R.string.permission_denied_explanation,
+        Snackbar.LENGTH_INDEFINITE
+    )
+        .setAction(R.string.settings) {
+            // Launches App settings screen.
+            activity.startActivity(
+                Intent().apply {
+                    action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                    data = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+            )
+        }.show()
 }

@@ -15,14 +15,13 @@ fun fetchImage(view: ImageView, src: String?) {
         val uri = src.toUri().buildUpon().scheme("https").build()
 
         val options = RequestOptions()
-                .placeholder(R.drawable.ic_profile)
-                .error(R.drawable.ic_profile)
+            .placeholder(R.drawable.ic_profile)
+            .error(R.drawable.ic_profile)
 
         Glide.with(view.context)
-                .setDefaultRequestOptions(options)
-                .load(uri)
-                .into(view)
-
+            .setDefaultRequestOptions(options)
+            .load(uri)
+            .into(view)
     }
 }
 

@@ -6,7 +6,7 @@ import com.example.android.politicalpreparedness.network.models.VoterInfoRespons
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
-        private val retrofitService: CivicsApiService
+    private val retrofitService: CivicsApiService
 ) {
 
     suspend fun getElections(): ElectionResponse {

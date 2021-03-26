@@ -14,26 +14,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DaoModule {
 
-
     @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationCompenent (i.e. everywhere in the application)
     @Provides
     fun provideYourDatabase(
-            @ApplicationContext context: Context
+        @ApplicationContext context: Context
     ): ElectionDatabase {
         return Room.databaseBuilder(
-                context.applicationContext,
-                ElectionDatabase::class.java,
-                "election_database"
+            context.applicationContext,
+            ElectionDatabase::class.java,
+            "election_database"
         )
-                .fallbackToDestructiveMigration()
-                .build()
-
-
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton
     @Provides
     fun provideYourDao(db: ElectionDatabase) = db.electionDao // The reason we can implement a Dao for the database
-
-
 }

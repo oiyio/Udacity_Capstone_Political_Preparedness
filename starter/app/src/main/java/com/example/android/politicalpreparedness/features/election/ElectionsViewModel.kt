@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.features.election
 
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.network.models.Election
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ElectionsViewModel @Inject constructor(
-        private val repository: ElectionRepository
+    private val repository: ElectionRepository
 ) : ViewModel() {
 
     val upcomingElectionsList = MutableStateFlow(listOf<Election>())

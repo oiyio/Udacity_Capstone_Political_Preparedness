@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VoterInfoViewModel @Inject constructor(
-        private val repository: VoterInfoRepository
+    private val repository: VoterInfoRepository
 ) : ViewModel() {
 
     lateinit var selectedElection: Election
@@ -59,5 +59,4 @@ class VoterInfoViewModel @Inject constructor(
             }
         }
     }
-
 }

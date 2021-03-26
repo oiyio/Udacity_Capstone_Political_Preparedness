@@ -33,13 +33,16 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         }
 
         // Observe the internal MutableLiveData
-        super.observe(owner, object : Observer<T> {
-            override fun onChanged(t: T?) {
-                if (mPending.compareAndSet(true, false)) {
-                    observer.onChanged(t)
+        super.observe(
+            owner,
+            object : Observer<T> {
+                override fun onChanged(t: T?) {
+                    if (mPending.compareAndSet(true, false)) {
+                        observer.onChanged(t)
+                    }
                 }
             }
-        })
+        )
     }
 
     @MainThread

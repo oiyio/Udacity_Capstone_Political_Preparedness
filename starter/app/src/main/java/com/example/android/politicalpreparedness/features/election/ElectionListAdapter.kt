@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.features.election.adapter
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -19,8 +18,8 @@ class ElectionListener(val clickListener: (election: Election) -> Unit) {
 /*
 * RecyclerViewAdapter class for ElectionListAdapter
 * */
-class ElectionListAdapter(private val clickListener: ElectionListener)
-    : ListAdapter<Election, ElectionListAdapter.ElectionViewHolder>(ElectionDiffCallback()) {
+class ElectionListAdapter(private val clickListener: ElectionListener) :
+    ListAdapter<Election, ElectionListAdapter.ElectionViewHolder>(ElectionDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
         return ElectionViewHolder.from(parent)

@@ -13,9 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RepresentativeViewModel @Inject constructor(
-        private val repository: ElectionRepository
+    private val repository: ElectionRepository
 ) : ViewModel() {
-
 
     private val _representativeList = MutableLiveData<List<Representative>>()
     val representativeList: LiveData<List<Representative>>
@@ -40,7 +39,6 @@ class RepresentativeViewModel @Inject constructor(
                 _representativeList.value = representativeResponse.offices.flatMap { office ->
                     office.getRepresentatives(representativeResponse.officials)
                 }
-
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
@@ -52,5 +50,4 @@ class RepresentativeViewModel @Inject constructor(
     fun setAddress(_address: Address) {
         address.value = _address
     }
-
 }

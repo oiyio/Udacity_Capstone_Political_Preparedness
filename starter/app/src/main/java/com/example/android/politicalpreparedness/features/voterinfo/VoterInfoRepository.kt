@@ -7,8 +7,8 @@ import com.example.android.politicalpreparedness.network.models.VoterInfoRespons
 import javax.inject.Inject
 
 class VoterInfoRepository @Inject constructor(
-        private val localDataSource: LocalDataSource,
-        private val remoteDataSource: RemoteDataSource
+    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: RemoteDataSource
 ) {
 
     suspend fun getVoterInfo(address: String, electionId: Int): VoterInfoResponse {

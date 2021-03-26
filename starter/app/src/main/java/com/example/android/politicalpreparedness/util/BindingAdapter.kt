@@ -5,15 +5,14 @@ import android.net.Uri
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import java.text.SimpleDateFormat
-import java.util.*
-
+import java.util.Date
+import java.util.Locale
 
 @BindingAdapter("date")
 fun bindDate(textView: TextView, date: Date) {
     val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.getDefault())
     textView.text = dateFormat.format(date)
 }
-
 
 @BindingAdapter("urlTextViewClickListener")
 fun urlTextViewClickListener(textView: TextView, url: String?) {

@@ -23,9 +23,11 @@ class ElectionsFragment : Fragment(R.layout.fragment_election) {
 
     lateinit var binding: FragmentElectionBinding
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentElectionBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -42,19 +44,28 @@ class ElectionsFragment : Fragment(R.layout.fragment_election) {
         setupSavedElectionListAdapter()
 
         // observe for navigating to VoterInfoFragment
-        viewModel.navigateToVoterInfoFragment.observe(viewLifecycleOwner, Observer { election ->
-            election?.let {
-                findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(election))
+        viewModel.navigateToVoterInfoFragment.observe(
+            viewLifecycleOwner,
+            Observer { election ->
+                election?.let {
+                    findNavController().navigate(
+                        ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
+                            election
+                        )
+                    )
+                }
             }
-        })
+        )
     }
 
     // setup recyclerView adapter for upcomingElectionList
     private fun setupUpcomingElectionListAdapter() {
         // create adapter instance and set item click listener
-        val upcomingElectionListAdapter = ElectionListAdapter(ElectionListener { election ->
-            viewModel.navigateToVoterInfoFragment.postValue(election)
-        })
+        val upcomingElectionListAdapter = ElectionListAdapter(
+            ElectionListener { election ->
+                viewModel.navigateToVoterInfoFragment.postValue(election)
+            }
+        )
 
         // set adapter
         binding.recyclerViewUpcomingElectionsList.adapter = upcomingElectionListAdapter
@@ -70,18 +81,23 @@ class ElectionsFragment : Fragment(R.layout.fragment_election) {
     // setup recyclerView adapter for savedElectionList
     private fun setupSavedElectionListAdapter() {
         // create adapter instance and set item click listener
-        val savedElectionListAdapter = ElectionListAdapter(ElectionListener { election ->
-            viewModel.navigateToVoterInfoFragment.postValue(election)
-        })
+        val savedElectionListAdapter = ElectionListAdapter(
+            ElectionListener { election ->
+                viewModel.navigateToVoterInfoFragment.postValue(election)
+            }
+        )
 
         // set adapter
         binding.recyclerViewSavedElectionsList.adapter = savedElectionListAdapter
 
         // put items to adapter
-        viewModel.savedElections.observe(viewLifecycleOwner, Observer { electionList ->
-            electionList?.let {
-                savedElectionListAdapter.submitList(electionList)
+        viewModel.savedElections.observe(
+            viewLifecycleOwner,
+            Observer { electionList ->
+                electionList?.let {
+                    savedElectionListAdapter.submitList(electionList)
+                }
             }
-        })
+        )
     }
 }

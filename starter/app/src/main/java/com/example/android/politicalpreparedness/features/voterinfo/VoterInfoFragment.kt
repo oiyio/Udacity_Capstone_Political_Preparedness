@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.features.voterinfo
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +16,11 @@ class VoterInfoFragment : Fragment(R.layout.fragment_voter_info) {
 
     val viewModel: VoterInfoViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val binding = FragmentVoterInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

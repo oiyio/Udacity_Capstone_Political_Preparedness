@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.di
 
-
 import com.example.android.politicalpreparedness.BuildConfig
 import com.example.android.politicalpreparedness.MyApp
 import com.example.android.politicalpreparedness.network.CivicsApiService
@@ -35,32 +34,34 @@ class RemoteDataModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .addInterceptor { chain ->
-                    val original = chain.request()
-                    val url = original.url
-                            .newBuilder()
-                            .addQueryParameter("key", BuildConfig.API_KEY) // API_KEY value is inside local.properties file
-                            .build()
-                    val request = original
-                            .newBuilder()
-                            .url(url)
-                            .build()
-                    chain.proceed(request)
-                }
-                .addInterceptor(ChuckInterceptor(MyApp.instance))
-                .build()
+            .addInterceptor { chain ->
+                val original = chain.request()
+                val url = original.url
+                    .newBuilder()
+                    .addQueryParameter(
+                        "key",
+                        BuildConfig.API_KEY
+                    ) // API_KEY value is inside local.properties file
+                    .build()
+                val request = original
+                    .newBuilder()
+                    .url(url)
+                    .build()
+                chain.proceed(request)
+            }
+            .addInterceptor(ChuckInterceptor(MyApp.instance))
+            .build()
     }
-
 
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .client(okHttpClient)
-                .baseUrl(BASE_URL)
-                .build()
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(okHttpClient)
+            .baseUrl(BASE_URL)
+            .build()
     }
 
     @Provides
@@ -73,9 +74,9 @@ class RemoteDataModule {
     @Singleton
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-                .add(ElectionAdapter())
-                .add(DateAdapter())
-                .add(KotlinJsonAdapterFactory())
-                .build()
+            .add(ElectionAdapter())
+            .add(DateAdapter())
+            .add(KotlinJsonAdapterFactory())
+            .build()
     }
 }

@@ -5,7 +5,7 @@ import com.example.android.politicalpreparedness.network.models.Election
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
-        private val electionDao: ElectionDao
+    private val electionDao: ElectionDao
 ) {
 
     fun getAllSavedElections(): LiveData<List<Election>> = electionDao.getAllSavedElections()

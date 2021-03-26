@@ -9,8 +9,8 @@ import com.example.android.politicalpreparedness.network.models.RepresentativeRe
 import javax.inject.Inject
 
 class ElectionRepository @Inject constructor(
-        private val localDataSource: LocalDataSource,
-        private val remoteDataSource: RemoteDataSource
+    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: RemoteDataSource
 ) {
     fun getAllSavedElections(): LiveData<List<Election>> = localDataSource.getAllSavedElections()
 

@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.features.representative.adapter
 
-
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
@@ -16,7 +15,7 @@ import com.example.android.politicalpreparedness.features.representative.model.R
 import com.example.android.politicalpreparedness.network.models.Channel
 
 class RepresentativeListAdapter :
-        ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
+    ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepresentativeViewHolder {
         return RepresentativeViewHolder.from(parent)
@@ -69,14 +68,14 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding) : Recycle
 
     private fun getFacebookUrl(channels: List<Channel>): String? {
         return channels.filter { channel -> channel.type == "Facebook" }
-                .map { channel -> "https://www.facebook.com/${channel.id}" }
-                .firstOrNull()
+            .map { channel -> "https://www.facebook.com/${channel.id}" }
+            .firstOrNull()
     }
 
     private fun getTwitterUrl(channels: List<Channel>): String? {
         return channels.filter { channel -> channel.type == "Twitter" }
-                .map { channel -> "https://www.twitter.com/${channel.id}" }
-                .firstOrNull()
+            .map { channel -> "https://www.twitter.com/${channel.id}" }
+            .firstOrNull()
     }
 
     private fun enableLink(view: ImageView, url: String) {
@@ -89,13 +88,12 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding) : Recycle
         val intent = Intent(ACTION_VIEW, uri)
         itemView.context.startActivity(intent)
     }
-
 }
 
 class RepresentativeDiffCallback : DiffUtil.ItemCallback<Representative>() {
     override fun areItemsTheSame(oldItem: Representative, newItem: Representative): Boolean {
-        return oldItem.official == newItem.official
-                && oldItem.office == newItem.office
+        return oldItem.official == newItem.official &&
+            oldItem.office == newItem.office
     }
 
     override fun areContentsTheSame(oldItem: Representative, newItem: Representative): Boolean {

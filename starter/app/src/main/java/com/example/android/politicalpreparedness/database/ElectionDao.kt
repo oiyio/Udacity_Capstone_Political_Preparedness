@@ -8,7 +8,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.android.politicalpreparedness.network.models.Election
 
-
 @Dao
 interface ElectionDao {
 
@@ -23,5 +22,4 @@ interface ElectionDao {
 
     @Delete
     suspend fun deleteElection(election: Election)
-
 }

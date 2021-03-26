@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.util
 
-
 import android.content.IntentSender
 import androidx.fragment.app.FragmentActivity
 import com.example.android.politicalpreparedness.R
@@ -34,12 +33,17 @@ fun checkDeviceLocationSettings(activity: FragmentActivity, resolve: Boolean = t
                 // Log.d(TAG, "Error getting location settings resolution: " + sendEx.message)
             }
         } else {
-            Snackbar.make(activity.findViewById(android.R.id.content), R.string.location_required_error, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok) {
-                        checkDeviceLocationSettings(
-                                activity = activity,
-                                lambda = lambda)
-                    }.show()
+            Snackbar.make(
+                activity.findViewById(android.R.id.content),
+                R.string.location_required_error,
+                Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(android.R.string.ok) {
+                    checkDeviceLocationSettings(
+                        activity = activity,
+                        lambda = lambda
+                    )
+                }.show()
         }
     }
 

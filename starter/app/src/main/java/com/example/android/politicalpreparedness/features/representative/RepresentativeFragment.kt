@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.features.representative
 
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.location.Geocoder
@@ -26,7 +25,7 @@ import com.example.android.politicalpreparedness.util.showSnackbarWithSettingsAc
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
+import java.util.Locale
 
 @AndroidEntryPoint
 class RepresentativeFragment : Fragment(R.layout.fragment_representative) {
@@ -36,11 +35,14 @@ class RepresentativeFragment : Fragment(R.layout.fragment_representative) {
 
     val viewModel: RepresentativeViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireActivity())
 
         binding = FragmentRepresentativeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -79,22 +81,25 @@ class RepresentativeFragment : Fragment(R.layout.fragment_representative) {
         val representativeListAdapter = RepresentativeListAdapter()
         binding.recyclerViewRepresentativeList.adapter = representativeListAdapter
 
-        viewModel.representativeList.observe(viewLifecycleOwner, Observer { representativeList ->
-            representativeList?.let {
-                representativeListAdapter.submitList(representativeList)
+        viewModel.representativeList.observe(
+            viewLifecycleOwner,
+            Observer { representativeList ->
+                representativeList?.let {
+                    representativeListAdapter.submitList(representativeList)
+                }
             }
-        })
+        )
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (isPermissionGranted(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)) {
             if (isPermissionGranted(requireContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
                 checkDeviceLocationSettings(
-                        activity = requireActivity(),
-                        resolve = false,
-                        lambda = {
-                            getMyCurrentLocation()
-                        }
+                    activity = requireActivity(),
+                    resolve = false,
+                    lambda = {
+                        getMyCurrentLocation()
+                    }
                 )
             } else {
                 requestBackgroundLocationPermission(this)
@@ -111,10 +116,10 @@ class RepresentativeFragment : Fragment(R.layout.fragment_representative) {
     private fun checkPermissions() {
         if (foregroundAndBackgroundLocationPermissionGranted(requireContext())) {
             checkDeviceLocationSettings(
-                    activity = requireActivity(),
-                    lambda = {
-                        getMyCurrentLocation()
-                    }
+                activity = requireActivity(),
+                lambda = {
+                    getMyCurrentLocation()
+                }
             )
         } else {
             requestForegroundLocationPermission(this)
@@ -143,11 +148,14 @@ class RepresentativeFragment : Fragment(R.layout.fragment_representative) {
     private fun geoCodeLocation(location: Location): Address {
         val geocoder = Geocoder(context, Locale.getDefault())
         return geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                .map { address ->
-                    Address(address.thoroughfare, address.subThoroughfare, address.locality
-                            ?: "", address.adminArea, address.postalCode)
-                }
-                .first()
+            .map { address ->
+                Address(
+                    address.thoroughfare, address.subThoroughfare,
+                    address.locality
+                        ?: "",
+                    address.adminArea, address.postalCode
+                )
+            }
+            .first()
     }
-
 }
