@@ -25,3 +25,10 @@ Navigation Components
 ### Installation
 
 Note : In order to launch this project, you must add API_KEY to local.properties file as the following. API_KEY=A1B2C3 In order to generate an API key, open https://console.developers.google.com -> create a project -> enable Google Civic Api -> copy the api key.
+
+### Screenshots
+![image](https://user-images.githubusercontent.com/7634049/112615326-6857e880-8e33-11eb-917d-b4fa52934c90.png)
+
+
+
+
